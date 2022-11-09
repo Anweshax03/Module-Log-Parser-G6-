@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding='ISO-8859-1' standalone='yes' ?>
+<TestRun>
+  <FailedTests>
+    <FailedTest id="1">
+      <Name>TestM::testName</Name>
+      <FailureType>Assertion</FailureType>
+      <Location>
+        <File>testing1.cpp</File>
+        <Line>50</Line>
+      </Location>
+      <Message>assertion failed
+- Expression: &quot;algorithm&quot;==m[0]-&gt;getModuleName()
+</Message>
+    </FailedTest>
+    <FailedTest id="2">
+      <Name>TestM::testfname</Name>
+      <FailureType>Assertion</FailureType>
+      <Location>
+        <File>testing1.cpp</File>
+        <Line>68</Line>
+      </Location>
+      <Message>assertion failed
+- Expression: &quot;inputf&quot;==p[0]-&gt;getFileName()
+</Message>
+    </FailedTest>
+  </FailedTests>
+  <SuccessfulTests></SuccessfulTests>
+  <Statistics>
+    <Tests>2</Tests>
+    <FailuresTotal>2</FailuresTotal>
+    <Errors>0</Errors>
+    <Failures>2</Failures>
+  </Statistics>
+</TestRun>
