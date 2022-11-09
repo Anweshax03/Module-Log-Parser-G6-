@@ -1,0 +1,32 @@
+SRC=src
+OBJ=obj
+BIN=bin
+INCLUDE=include
+VALGRIND = tools/valgrind
+
+INCLUDEFLAGS=-I$(INCLUDE)
+CPPFLAGS=-ansi -c -g -Wall -std=c++11 -DDEBUG -m64 $(INCLUDEFLAGS)
+
+tester:Main.o Parser.o Module.o Message.o
+	g++ -o $(BIN)/tester $(OBJ)/Main.o $(OBJ)/Parser.o $(OBJ)/Module.o $(OBJ)/Message.o
+
+Main.o:$(SRC)/Main.cpp
+	g++ -o $(OBJ)/Main.o $(CPPFLAGS) $(SRC)/Main.cpp
+
+Parser.o:$(SRC)/Parser.cpp
+	g++ -o $(OBJ)/Parser.o $(CPPFLAGS) $(SRC)/Parser.cpp
+
+Module.o:$(SRC)/Module.cpp
+	g++ -o $(OBJ)/Module.o $(CPPFLAGS) $(SRC)/Module.cpp
+
+Message.o:$(SRC)/Message.cpp
+	g++ -o $(OBJ)/Message.o $(CPPFLAGS) $(SRC)/Message.cpp
+
+valgrind: tester
+	valgrind --tool=memcheck $(BIN)/tester 2>$(VALGRIND)/valgrind1.txt
+
+clean:
+	echo"cleaning the .exe and .o files"
+	rm -f $(BIN)/tester $(OBJ)/Parser.o $(OBJ)/Module.o $(OBJ)/Message.o
+
+
